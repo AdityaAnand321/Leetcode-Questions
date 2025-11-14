@@ -1,10 +1,22 @@
 class Solution {
 public:
-    string addStrings(string num1, string num2) {
-        int a=stoi(num1);
-        int b=stoi(num2);
-        int c=a+b;
+   string addStrings(string a, string b) {
+    int i = a.size() - 1;
+    int j = b.size() - 1;
+    int carry = 0;
+    string result = "";
 
-        return to_string(c);
+    while (i >= 0 || j >= 0 || carry) {
+        int sum = carry;
+
+        if (i >= 0) sum += a[i--] - '0';
+        if (j >= 0) sum += b[j--] - '0';
+
+        result += (sum % 10) + '0';
+        carry = sum / 10;
     }
+
+    reverse(result.begin(), result.end());
+    return result;
+}
 };
