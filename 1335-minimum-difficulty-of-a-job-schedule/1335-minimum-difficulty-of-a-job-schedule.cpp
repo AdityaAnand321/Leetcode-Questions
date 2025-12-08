@@ -7,7 +7,6 @@ public:
         memset(dp, -1, sizeof(dp));
         return diff(jd, n, 0, d);
     }
-
     int diff(vector<int>& jd, int n, int index, int d) {
           if (d == 1) {
             int maxD = jd[index];
@@ -24,7 +23,6 @@ public:
             int next = diff(jd, n, i + 1, d - 1);     
             ans = min(ans, currMax + next);
         }
-
-        return dp[index][d] = ans;
+             return dp[index][d] = ans;
     }
 };
