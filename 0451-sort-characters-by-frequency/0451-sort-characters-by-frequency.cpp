@@ -1,28 +1,19 @@
 class Solution {
 public:
     string frequencySort(string s) {
-        unordered_map<char,int>mp;
+        unordered_map<char,int> freq;
+        for(char c : s) freq[c]++;
 
-        int n=s.size();
-        for(char c:s)
-        {  
-            mp[c]++;
-        }
-        vector<pair<int,char>>vp;
+        vector<pair<int,char>> v;
+        for(auto &it : freq)
+            v.push_back({it.second, it.first});
 
-        for(auto &it:mp)
-        {
-            vp.push_back({it.second,it.first});
-        }
+        sort(v.begin(), v.end(), greater<>());
 
-        sort(vp.begin(),vp.end(),greater<>());
-        string result="";
+        string ans = "";
+        for(auto &p : v)
+            ans += string(p.first, p.second);
 
-        for(auto &it: vp)
-        {
-            result.append(it.first,it.second);
-        }
-        return result;
-
+        return ans;
     }
 };
